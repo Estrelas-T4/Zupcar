@@ -20,6 +20,7 @@ public class CarroController {
     }
 
     @PostMapping // é o Request Mapping utilizando o Verbo POST do PROTOCOLO HTTP
+    @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarCarro(@RequestBody CarroDTO carroDTO){
         // Todo Classe DTO são representações de Json seja de Entrada ou Saida.
         concessionaria.add(carroDTO);
