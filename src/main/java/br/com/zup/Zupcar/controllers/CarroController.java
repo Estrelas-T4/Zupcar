@@ -47,7 +47,20 @@ public class CarroController {
 
          throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não encontrei");
         */
-
     }
 
+    @PutMapping("/{nomeDoCarro}")
+    public CarroDTO atualizarCarro(@PathVariable String nomeDoCarro, @RequestBody CarroDTO carroDTO ){
+        for(CarroDTO objetoDaLista : concessionaria){
+            if(objetoDaLista.getModelo().equals(nomeDoCarro)){
+                objetoDaLista.setAno(carroDTO.getAno());
+                objetoDaLista.setCor(carroDTO.getCor());
+                objetoDaLista.setMotor(carroDTO.getMotor());
+
+                return objetoDaLista;
+            }
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não encontrei");
+    }
 }
